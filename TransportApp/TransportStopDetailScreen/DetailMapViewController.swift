@@ -17,7 +17,7 @@ class DetailMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initMap() 
+        initMap()
         initViewModel()
         getStopLocation()
     }
