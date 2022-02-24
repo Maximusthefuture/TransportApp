@@ -7,12 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2044073D2CB9844BD6594C03 /* Pods_TransportApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D6ECCA6B2B5E70ED5377D0 /* Pods_TransportApp.framework */; };
 		3804995327C77D1400BE9EAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804995227C77D1400BE9EAD /* AppDelegate.swift */; };
 		3804995527C77D1400BE9EAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804995427C77D1400BE9EAD /* SceneDelegate.swift */; };
 		3804995727C77D1400BE9EAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804995627C77D1400BE9EAD /* ViewController.swift */; };
 		3804995A27C77D1400BE9EAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3804995827C77D1400BE9EAD /* Main.storyboard */; };
 		3804995C27C77D1700BE9EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3804995B27C77D1700BE9EAD /* Assets.xcassets */; };
 		3804995F27C77D1700BE9EAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3804995D27C77D1700BE9EAD /* LaunchScreen.storyboard */; };
+		3804996727C77EB300BE9EAD /* TransportStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804996627C77EB300BE9EAD /* TransportStops.swift */; };
+		3804996927C77FAD00BE9EAD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804996827C77FAD00BE9EAD /* Network.swift */; };
+		3804996B27C7816C00BE9EAD /* NetworkingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804996A27C7816C00BE9EAD /* NetworkingHandler.swift */; };
+		3804996D27C7854E00BE9EAD /* DataResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804996C27C7854E00BE9EAD /* DataResponseError.swift */; };
+		3804996F27C7862B00BE9EAD /* MosgorNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804996E27C7862B00BE9EAD /* MosgorNetwork.swift */; };
+		3804997127C78BD300BE9EAD /* MosgorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804997027C78BD300BE9EAD /* MosgorClient.swift */; };
+		3804997327C78D7600BE9EAD /* BusStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804997227C78D7600BE9EAD /* BusStopsViewModel.swift */; };
+		3804997527C790FF00BE9EAD /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804997427C790FF00BE9EAD /* Extensions+UIView.swift */; };
+		3804997727C7955A00BE9EAD /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804997627C7955A00BE9EAD /* DetailMapViewController.swift */; };
+		3804997927C7B60B00BE9EAD /* TransportStopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804997827C7B60B00BE9EAD /* TransportStopDetail.swift */; };
+		3804997B27C7BA5900BE9EAD /* DetailMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804997A27C7BA5900BE9EAD /* DetailMapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +36,20 @@
 		3804995B27C77D1700BE9EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3804995E27C77D1700BE9EAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3804996027C77D1700BE9EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3804996627C77EB300BE9EAD /* TransportStops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStops.swift; sourceTree = "<group>"; };
+		3804996827C77FAD00BE9EAD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		3804996A27C7816C00BE9EAD /* NetworkingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHandler.swift; sourceTree = "<group>"; };
+		3804996C27C7854E00BE9EAD /* DataResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponseError.swift; sourceTree = "<group>"; };
+		3804996E27C7862B00BE9EAD /* MosgorNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosgorNetwork.swift; sourceTree = "<group>"; };
+		3804997027C78BD300BE9EAD /* MosgorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosgorClient.swift; sourceTree = "<group>"; };
+		3804997227C78D7600BE9EAD /* BusStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsViewModel.swift; sourceTree = "<group>"; };
+		3804997427C790FF00BE9EAD /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		3804997627C7955A00BE9EAD /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
+		3804997827C7B60B00BE9EAD /* TransportStopDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStopDetail.swift; sourceTree = "<group>"; };
+		3804997A27C7BA5900BE9EAD /* DetailMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewModel.swift; sourceTree = "<group>"; };
+		7B6EAC76F5CF6445E7C37F7C /* Pods-TransportApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransportApp.release.xcconfig"; path = "Target Support Files/Pods-TransportApp/Pods-TransportApp.release.xcconfig"; sourceTree = "<group>"; };
+		A606B0156404D3C07707517E /* Pods-TransportApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransportApp.debug.xcconfig"; path = "Target Support Files/Pods-TransportApp/Pods-TransportApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E0D6ECCA6B2B5E70ED5377D0 /* Pods_TransportApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TransportApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +57,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2044073D2CB9844BD6594C03 /* Pods_TransportApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B734DE5640F2C4F7B5A3313 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0D6ECCA6B2B5E70ED5377D0 /* Pods_TransportApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3804994627C77D1300BE9EAD = {
 			isa = PBXGroup;
 			children = (
 				3804995127C77D1400BE9EAD /* TransportApp */,
 				3804995027C77D1400BE9EAD /* Products */,
+				5718DC9B905DCFC97AA6E8C3 /* Pods */,
+				1B734DE5640F2C4F7B5A3313 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +93,83 @@
 		3804995127C77D1400BE9EAD /* TransportApp */ = {
 			isa = PBXGroup;
 			children = (
-				3804995227C77D1400BE9EAD /* AppDelegate.swift */,
-				3804995427C77D1400BE9EAD /* SceneDelegate.swift */,
-				3804995627C77D1400BE9EAD /* ViewController.swift */,
-				3804995827C77D1400BE9EAD /* Main.storyboard */,
-				3804995B27C77D1700BE9EAD /* Assets.xcassets */,
-				3804995D27C77D1700BE9EAD /* LaunchScreen.storyboard */,
+				3804998127C7C25100BE9EAD /* TransportStopDetailScreen */,
+				3804998027C7C23500BE9EAD /* TransportStopListScreen */,
+				3804997F27C7C21C00BE9EAD /* Network */,
+				3804997E27C7C20D00BE9EAD /* Extensions */,
+				3804997D27C7C1F900BE9EAD /* Support */,
+				3804997C27C7C1E000BE9EAD /* Models */,
 				3804996027C77D1700BE9EAD /* Info.plist */,
 			);
 			path = TransportApp;
+			sourceTree = "<group>";
+		};
+		3804997C27C7C1E000BE9EAD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3804996627C77EB300BE9EAD /* TransportStops.swift */,
+				3804997827C7B60B00BE9EAD /* TransportStopDetail.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3804997D27C7C1F900BE9EAD /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				3804995227C77D1400BE9EAD /* AppDelegate.swift */,
+				3804995427C77D1400BE9EAD /* SceneDelegate.swift */,
+				3804995827C77D1400BE9EAD /* Main.storyboard */,
+				3804995B27C77D1700BE9EAD /* Assets.xcassets */,
+				3804995D27C77D1700BE9EAD /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		3804997E27C7C20D00BE9EAD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3804997427C790FF00BE9EAD /* Extensions+UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3804997F27C7C21C00BE9EAD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3804996827C77FAD00BE9EAD /* Network.swift */,
+				3804996A27C7816C00BE9EAD /* NetworkingHandler.swift */,
+				3804996C27C7854E00BE9EAD /* DataResponseError.swift */,
+				3804996E27C7862B00BE9EAD /* MosgorNetwork.swift */,
+				3804997027C78BD300BE9EAD /* MosgorClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3804998027C7C23500BE9EAD /* TransportStopListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3804997227C78D7600BE9EAD /* BusStopsViewModel.swift */,
+				3804995627C77D1400BE9EAD /* ViewController.swift */,
+			);
+			name = TransportStopListScreen;
+			sourceTree = "<group>";
+		};
+		3804998127C7C25100BE9EAD /* TransportStopDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3804997627C7955A00BE9EAD /* DetailMapViewController.swift */,
+				3804997A27C7BA5900BE9EAD /* DetailMapViewModel.swift */,
+			);
+			path = TransportStopDetailScreen;
+			sourceTree = "<group>";
+		};
+		5718DC9B905DCFC97AA6E8C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A606B0156404D3C07707517E /* Pods-TransportApp.debug.xcconfig */,
+				7B6EAC76F5CF6445E7C37F7C /* Pods-TransportApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +179,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3804996327C77D1700BE9EAD /* Build configuration list for PBXNativeTarget "TransportApp" */;
 			buildPhases = (
+				EE2FF00EEADF6C926EF19E83 /* [CP] Check Pods Manifest.lock */,
 				3804994B27C77D1400BE9EAD /* Sources */,
 				3804994C27C77D1400BE9EAD /* Frameworks */,
 				3804994D27C77D1400BE9EAD /* Resources */,
+				FAF713FBECE6FA0190366A65 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +240,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EE2FF00EEADF6C926EF19E83 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TransportApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAF713FBECE6FA0190366A65 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TransportApp/Pods-TransportApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TransportApp/Pods-TransportApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TransportApp/Pods-TransportApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3804994B27C77D1400BE9EAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3804997B27C7BA5900BE9EAD /* DetailMapViewModel.swift in Sources */,
+				3804997727C7955A00BE9EAD /* DetailMapViewController.swift in Sources */,
+				3804997527C790FF00BE9EAD /* Extensions+UIView.swift in Sources */,
+				3804996927C77FAD00BE9EAD /* Network.swift in Sources */,
+				3804996727C77EB300BE9EAD /* TransportStops.swift in Sources */,
+				3804996B27C7816C00BE9EAD /* NetworkingHandler.swift in Sources */,
+				3804997127C78BD300BE9EAD /* MosgorClient.swift in Sources */,
+				3804997927C7B60B00BE9EAD /* TransportStopDetail.swift in Sources */,
 				3804995727C77D1400BE9EAD /* ViewController.swift in Sources */,
 				3804995327C77D1400BE9EAD /* AppDelegate.swift in Sources */,
+				3804996D27C7854E00BE9EAD /* DataResponseError.swift in Sources */,
+				3804997327C78D7600BE9EAD /* BusStopsViewModel.swift in Sources */,
 				3804995527C77D1400BE9EAD /* SceneDelegate.swift in Sources */,
+				3804996F27C7862B00BE9EAD /* MosgorNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,7 +432,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -284,6 +444,7 @@
 		};
 		3804996427C77D1700BE9EAD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A606B0156404D3C07707517E /* Pods-TransportApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,7 +455,6 @@
 				INFOPLIST_FILE = TransportApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +472,7 @@
 		};
 		3804996527C77D1700BE9EAD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B6EAC76F5CF6445E7C37F7C /* Pods-TransportApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,7 +483,6 @@
 				INFOPLIST_FILE = TransportApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
