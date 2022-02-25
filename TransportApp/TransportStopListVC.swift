@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TransportStopListVC: UIViewController {
     
     fileprivate var loadingIndicator: UIActivityIndicatorView?
     fileprivate let tableView = UITableView()
-    fileprivate var vm: BusStopsViewModel?
+    fileprivate var vm: TransportStopsViewModel?
     let network = Network()
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     fileprivate func initViewModel() {
       
-        vm = BusStopsViewModel(network: network)
+        vm = TransportStopsViewModel(network: network)
     }
     
     fileprivate func getVMObservers() {
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension TransportStopListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
 //        let cell = tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell") as! UITableViewCell
@@ -79,13 +79,15 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension TransportStopListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected: ", vm?.busStopItem(at: indexPath.row).id)
-        let vc = DetailMapViewController()
-        vc.network = network
-        vc.transportStopId = vm?.busStopItem(at: indexPath.row).id
+        let diContainer = DependencyContainer.shared
+        let transportStopId = vm?.busStopItem(at: indexPath.row).id
+        let vc = diContainer.makeDetailMapViewController(transportStopId: transportStopId ?? "00000000")
+//        vc.network = network
+//        vc.transportStopId = vm?.busStopItem(at: indexPath.row).id
         self.navigationController?.pushViewController(vc, animated: true)
+//        present(oneMoreVC, animated: true)
         
     }
 }

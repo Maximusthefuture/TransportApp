@@ -8,10 +8,11 @@
 import Foundation
 
 protocol DetailMapViewModelProtocol {
-    
+    func getTransportStopDetailInfo()
+    var transportStopLocation: ((_ lat: Double?, _ lon: Double?) -> Void)? { get set }
 }
 
-class DetailMapViewModel {
+class DetailMapViewModel: DetailMapViewModelProtocol {
     
     var transportStopId: String?
     fileprivate let network: NetworkProtocol?
@@ -20,7 +21,7 @@ class DetailMapViewModel {
     var reload: (() -> Void)?
     var transportStopLocation: ((_ lat: Double?, _ lon: Double?) -> Void)?
     
-    init(transportStopId: String, network: NetworkProtocol?) {
+    init(transportStopId: String?, network: NetworkProtocol?) {
         self.transportStopId = transportStopId
         self.network = network
         mosgorNetwork = MosgorNetwork(network: network!)

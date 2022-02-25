@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol BusStopsViewModelProtocol {
+protocol TransportStopsViewModelProtocol {
     
 }
 
 
-class BusStopsViewModel: BusStopsViewModelProtocol {
+class TransportStopsViewModel: TransportStopsViewModelProtocol {
     
     //MARK: FACTORY, DI???
     

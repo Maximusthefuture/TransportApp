@@ -11,22 +11,34 @@ import MapboxMaps
 class DetailMapViewController: UIViewController {
 
     var mapView: MapView!
-    var vm: DetailMapViewModel?
-    var network: NetworkProtocol?
-    var transportStopId: String?
+    var vm: DetailMapViewModelProtocol?
+//    var network: NetworkProtocol?
+//    var transportStopId: String?
+    var detailVC: TransportStopDetailVC?
+    
+    
+    init(viewModel: DetailMapViewModelProtocol) {
+        super.init(nibName: nil, bundle: nil)
+        self.vm = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initMap()
-        initViewModel()
+//        initViewModel()
         getStopLocation()
+       
+//        mapView.addSubview(detailVC!.view)
+//        detailVC?.view.anchor(top: nil, leading: mapView.trailingAnchor, bottom: mapView.bottomAnchor, trailing: mapView.trailingAnchor)
     }
     
     fileprivate func getStopLocation() {
         vm?.getTransportStopDetailInfo()
         vm?.transportStopLocation = { lat, lon in
-            print("lat", lat)
-            print("lon", lon)
             let coordinate = CLLocationCoordinate2D(latitude: lat ?? 0.0, longitude: lon ?? 0.0)
             var pointAnnotation = PointAnnotation(coordinate: coordinate)
             pointAnnotation.image = .init(image: UIImage(named: "red_pin")!, name: "red_pin")
@@ -38,8 +50,6 @@ class DetailMapViewController: UIViewController {
         }
     }
     
-   
-    
     fileprivate func initMap() {
         let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoibWF4aW11czMwIiwiYSI6ImNsMDEyMmVnODAxbTYzY3BsMThtb25ucnAifQ.voHNtVSe0EvVL_otfnxy1g")
         let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
@@ -48,9 +58,9 @@ class DetailMapViewController: UIViewController {
         view.addSubview(mapView)
     }
     
-    fileprivate func initViewModel() {
-       vm = DetailMapViewModel(transportStopId: transportStopId ?? "", network: network)
-    }
+//    fileprivate func initViewModel() {
+//       vm = DetailMapViewModel(transportStopId: transportStopId ?? "", network: network)
+//    }
     
 
 }
