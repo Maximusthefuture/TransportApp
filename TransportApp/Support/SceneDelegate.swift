@@ -11,13 +11,15 @@ import Foundation
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-     let container = DependencyContainer.shared()
+    let container = DependencyContainer.shared()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-//        let navController: UINavigationController?
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         let transportStopListVC = container.makeTransportStopListVC()
         let navController = UINavigationController(rootViewController: transportStopListVC)
+        
         if let transportStopId = UserDefaults.standard.string(forKey: "transportStopId") {
             let mapDetailVC = container.makeDetailMapViewController(transportStopId: "\(transportStopId)")
             navController.pushViewController(mapDetailVC, animated: true)

@@ -77,7 +77,7 @@ class TransportStopDetailVC: ResizableViewController {
         print("Handle schedule")
     }
     
-    
+    //разделить на более мелкие методы
     fileprivate func initTransportNumberStackView() {
         transportNumbersStackView = UIStackView()
         view.addSubview(transportNumbersStackView)
@@ -92,7 +92,7 @@ class TransportStopDetailVC: ResizableViewController {
         timeHorizontalStackView.distribution = .fillEqually
         timeHorizontalStackView.spacing = 10
         timeHorizontalStackView.alignment = .center
-        timeHorizontalStackView.anchor(top: transportNumbersStackView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 4, left: 16, bottom: 0, right: 0))
+        timeHorizontalStackView.anchor(top: transportNumbersStackView.bottomAnchor, leading: transportNumbersStackView.leadingAnchor, bottom: nil, trailing: transportNumbersStackView.trailingAnchor, padding: .init(top: 4, left: 16, bottom: 0, right: 0))
         
         guard let count = vm?.transportArray else { return }
         for tag in count {
