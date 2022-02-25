@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         let transportStopListVC = container.makeTransportStopListVC()
-        let navController = UINavigationController(rootViewController: transportStopListVC)
+        let mapDetailVC = container.makeDetailMapViewController(transportStopId: "00055cef-68d8-44b4-98cc-573d061b400a")
+        let navController = UINavigationController(rootViewController: mapDetailVC)
        
         window?.rootViewController = navController
         

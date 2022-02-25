@@ -14,8 +14,13 @@ class DetailMapViewController: UIViewController {
     var vm: DetailMapViewModelProtocol?
 //    var network: NetworkProtocol?
 //    var transportStopId: String?
-    var detailVC: TransportStopDetailVC?
-    
+    var detailVC = TransportStopDetailVC(initialHeight: 300)
+    let button: UIButton = {
+       let button = UIButton()
+        button.backgroundColor = .blue
+        button.layer.cornerRadius = 40
+        return button
+    }()
     
     init(viewModel: DetailMapViewModelProtocol) {
         super.init(nibName: nil, bundle: nil)
@@ -30,9 +35,19 @@ class DetailMapViewController: UIViewController {
         super.viewDidLoad()
         initMap()
         getStopLocation()
-       
-//        mapView.addSubview(detailVC!.view)
-//        detailVC?.view.anchor(top: nil, leading: mapView.trailingAnchor, bottom: mapView.bottomAnchor, trailing: mapView.trailingAnchor)
+        mapView.addSubview(button)
+        button.centerInSuperview()
+        addChild(detailVC)
+        detailVC.didMove(toParent: self)
+        mapView.addSubview(detailVC.view)
+        detailVC.view.anchor(top: nil, leading: mapView.leadingAnchor, bottom: mapView.bottomAnchor, trailing: mapView.trailingAnchor, size: .init(width: 0, height: 300))
+//        detailVC.view.centerInBottom()
+//        present(TransportStopDetailVC(initialHeight: 300), animated: true)
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view = PassThroughView()
     }
     
     fileprivate func getStopLocation() {

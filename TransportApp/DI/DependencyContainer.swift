@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DependencyContainer {
+final class DependencyContainer {
     
     private var network: NetworkProtocol?
     private var mosgorNetwork: MosgorNetworkProtocol!
@@ -54,6 +54,5 @@ extension DependencyContainer: ViewModelFactory {
     func makeDetailMapViewModel(transportStopId: String?) -> DetailMapViewModelProtocol {
         return DetailMapViewModel(transportStopId: transportStopId, mosgorNetwork: mosgorNetwork, mosgorClient: mosgorClient)
     }
-    
-    
 }
+

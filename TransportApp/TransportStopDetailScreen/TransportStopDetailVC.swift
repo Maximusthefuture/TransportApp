@@ -11,6 +11,40 @@ import UIKit
 
 class TransportStopDetailVC: ResizableViewController {
     
+    let stopNameLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.textColor = .black
+       
+        return label
+    }()
+    
+    let realTimeForecastText: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.textColor = .gray
+        label.text = "Real-time forecast"
+        return label
+    }()
+    
+    let showScheduleButton: UIButton = {
+       let button = UIButton()
+        button.setTitle("Show schedule", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(handleScheduleButtonTap), for: .touchUpInside)
+        return button
+    }()
+    
+    var lineView: UIView!
+    
+    @objc fileprivate func handleScheduleButtonTap() {
+        print("Handle schedule")
+    }
+    
+    var vm: TransportStopDetailViewModelProtocol?
+    
+    var transportNumbersStackView: UIStackView!
+    
     override init(initialHeight: CGFloat) {
         super.init(initialHeight: initialHeight)
     }
@@ -21,6 +55,109 @@ class TransportStopDetailVC: ResizableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
+        view.addSubview(stopNameLabel)
+        vm = TransportStopDetailViewModel()
+        stopNameLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0))
+        stopNameLabel.text = "STOP NAME HERE"
+        initTransportNumberStackView()
+        initRealTimeForecastText()
+//        line()
+//        initScheduleButton()
+        initHorizontalButtonStackView()
+        
+        verticalStackView()
+      
+    }
+    
+    fileprivate func initTransportNumberStackView() {
+        transportNumbersStackView = UIStackView()
+        view.addSubview(transportNumbersStackView)
+        transportNumbersStackView?.axis = .horizontal
+        transportNumbersStackView?.distribution = .fillEqually
+        transportNumbersStackView.spacing = 10
+        transportNumbersStackView.anchor(top: stopNameLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 40, left: 16, bottom: 0, right: 0))
+        
+        guard let count = vm?.transportArray else { return }
+        for tag in count {
+            let button = UIButton()
+            button.setTitle(tag, for: .normal)
+            button.backgroundColor = .brown
+            transportNumbersStackView?.addArrangedSubview(button)
+        }
+        
+    }
+    
+    fileprivate func initRealTimeForecastText() {
+        view.addSubview(realTimeForecastText)
+        realTimeForecastText.anchor(top: transportNumbersStackView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0))
+        
+    }
+    
+    fileprivate func initScheduleButton() {
+        view.addSubview(showScheduleButton)
+        showScheduleButton.anchor(top: lineView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
+    }
+    
+    fileprivate func line() {
+        self.view.addSubview(lineView)
+        lineView.anchor(top: realTimeForecastText.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: view.bounds.width, height: 1.0))
+    }
+    
+    let shareButton: CustomButton = {
+       let button = CustomButton()
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.setTitle("Share", for: .normal)
+        button.addTarget(self, action: #selector(handleShareButtonTap), for: .touchUpInside)
+        return button
+    }()
+    
+    let favoriteButton: CustomButton = {
+       let button = CustomButton()
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.setTitle("Favorite", for: .normal)
+        button.addTarget(self, action: #selector(handleFavoriteButtonTap), for: .touchUpInside)
+        return button
+    }()
+    
+    let routeButton: CustomButton = {
+       let button = CustomButton()
+        button.setImage(UIImage(systemName: "chart.line.uptrend.xyaxis"), for: .normal)
+        button.setTitle("Route", for: .normal)
+        button.addTarget(self, action: #selector(handleRouteButtonTap), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc fileprivate func handleShareButtonTap() {
+        
+    }
+   
+    @objc fileprivate func handleFavoriteButtonTap() {
+        
+    }
+   
+    @objc fileprivate func handleRouteButtonTap() {
+        
+    }
+   
+    
+    fileprivate var horizontalButtonStackView: UIStackView!
+    
+    fileprivate func initHorizontalButtonStackView() {
+        horizontalButtonStackView = UIStackView(arrangedSubviews: [shareButton, favoriteButton, routeButton])
+        horizontalButtonStackView.axis = .horizontal
+        horizontalButtonStackView.distribution = .fillEqually
+    }
+    
+    fileprivate func verticalStackView() {
+        let line1 = LineView(frame: .zero)
+        let line2 = LineView(frame: .zero)
+        let line3 = LineView(frame: .zero)
+        let stackView = UIStackView(arrangedSubviews: [line1, showScheduleButton, line2, horizontalButtonStackView, line3])
+        stackView.distribution = .fill
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        view.addSubview(stackView)
+        stackView.anchor(top: realTimeForecastText.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 8, left: 0, bottom: 0, right: 0))
     }
 }

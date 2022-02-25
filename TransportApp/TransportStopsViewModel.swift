@@ -17,7 +17,6 @@ protocol TransportStopsViewModelProtocol {
 
 class TransportStopsViewModel: TransportStopsViewModelProtocol {
     
-//    fileprivate var network: NetworkProtocol?
     fileprivate var mosgorNetwork: MosgorNetworkProtocol?
     fileprivate var mosgorClient: MosgorClientProtocol?
     fileprivate var busStopsArray = [TransportData]()
@@ -33,7 +32,6 @@ class TransportStopsViewModel: TransportStopsViewModelProtocol {
     }
     
     init(mosgorNetwork: MosgorNetworkProtocol, mosgorClient: MosgorClientProtocol) {
-//        self.network = network
         self.mosgorNetwork = mosgorNetwork
         self.mosgorClient = mosgorClient
     }
