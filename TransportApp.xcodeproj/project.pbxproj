@@ -28,6 +28,7 @@
 		3804998327C7EFDB00BE9EAD /* ResizableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804998227C7EFDB00BE9EAD /* ResizableViewController.swift */; };
 		3804998527C7F01100BE9EAD /* TransportStopDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3804998427C7F01100BE9EAD /* TransportStopDetailVC.swift */; };
 		38E9D2FB27C901120022FC67 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E9D2FA27C901120022FC67 /* CustomButton.swift */; };
+		38E9D2FD27C929570022FC67 /* ButtonWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E9D2FC27C929570022FC67 /* ButtonWithLabel.swift */; };
 		38F0DE2D27C8B0E500E98BF5 /* Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE2C27C8B0E500E98BF5 /* Factories.swift */; };
 		38F0DE2F27C8B25C00E98BF5 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE2E27C8B25C00E98BF5 /* DependencyContainer.swift */; };
 		38F0DE3727C8CBDA00E98BF5 /* BottomSheetTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE3327C8CBDA00E98BF5 /* BottomSheetTransitioningDelegate.swift */; };
@@ -35,7 +36,6 @@
 		38F0DE3927C8CBDA00E98BF5 /* BottomSheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE3527C8CBDA00E98BF5 /* BottomSheetPresentationController.swift */; };
 		38F0DE3A27C8CBDA00E98BF5 /* BottomSheetModalDissmisalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE3627C8CBDA00E98BF5 /* BottomSheetModalDissmisalHandler.swift */; };
 		38F0DE3C27C8CC2000E98BF5 /* Extensions + CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE3B27C8CC2000E98BF5 /* Extensions + CGRect.swift */; };
-		38F0DE3F27C8D0FB00E98BF5 /* PassThroughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE3E27C8D0FB00E98BF5 /* PassThroughtView.swift */; };
 		38F0DE4127C8D84000E98BF5 /* TransportStopDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE4027C8D84000E98BF5 /* TransportStopDetailViewModel.swift */; };
 		38F0DE4327C8DCD400E98BF5 /* LineUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0DE4227C8DCD400E98BF5 /* LineUIView.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +63,7 @@
 		3804998227C7EFDB00BE9EAD /* ResizableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableViewController.swift; sourceTree = "<group>"; };
 		3804998427C7F01100BE9EAD /* TransportStopDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStopDetailVC.swift; sourceTree = "<group>"; };
 		38E9D2FA27C901120022FC67 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		38E9D2FC27C929570022FC67 /* ButtonWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithLabel.swift; sourceTree = "<group>"; };
 		38F0DE2C27C8B0E500E98BF5 /* Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factories.swift; sourceTree = "<group>"; };
 		38F0DE2E27C8B25C00E98BF5 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		38F0DE3327C8CBDA00E98BF5 /* BottomSheetTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetTransitioningDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		38F0DE3527C8CBDA00E98BF5 /* BottomSheetPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetPresentationController.swift; sourceTree = "<group>"; };
 		38F0DE3627C8CBDA00E98BF5 /* BottomSheetModalDissmisalHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetModalDissmisalHandler.swift; sourceTree = "<group>"; };
 		38F0DE3B27C8CC2000E98BF5 /* Extensions + CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + CGRect.swift"; sourceTree = "<group>"; };
-		38F0DE3E27C8D0FB00E98BF5 /* PassThroughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassThroughtView.swift; sourceTree = "<group>"; };
 		38F0DE4027C8D84000E98BF5 /* TransportStopDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportStopDetailViewModel.swift; sourceTree = "<group>"; };
 		38F0DE4227C8DCD400E98BF5 /* LineUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineUIView.swift; sourceTree = "<group>"; };
 		7B6EAC76F5CF6445E7C37F7C /* Pods-TransportApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransportApp.release.xcconfig"; path = "Target Support Files/Pods-TransportApp/Pods-TransportApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,7 +190,6 @@
 				3804997627C7955A00BE9EAD /* DetailMapViewController.swift */,
 				3804997A27C7BA5900BE9EAD /* DetailMapViewModel.swift */,
 				3804998427C7F01100BE9EAD /* TransportStopDetailVC.swift */,
-				38F0DE3E27C8D0FB00E98BF5 /* PassThroughtView.swift */,
 				38F0DE4027C8D84000E98BF5 /* TransportStopDetailViewModel.swift */,
 			);
 			path = TransportStopDetailScreen;
@@ -201,6 +200,7 @@
 			children = (
 				38F0DE4227C8DCD400E98BF5 /* LineUIView.swift */,
 				38E9D2FA27C901120022FC67 /* CustomButton.swift */,
+				38E9D2FC27C929570022FC67 /* ButtonWithLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -359,7 +359,6 @@
 				3804996927C77FAD00BE9EAD /* Network.swift in Sources */,
 				3804996727C77EB300BE9EAD /* TransportStops.swift in Sources */,
 				38F0DE3827C8CBDA00E98BF5 /* BottomSheetPresentationController+PullBar.swift in Sources */,
-				38F0DE3F27C8D0FB00E98BF5 /* PassThroughtView.swift in Sources */,
 				3804996B27C7816C00BE9EAD /* NetworkingHandler.swift in Sources */,
 				3804998527C7F01100BE9EAD /* TransportStopDetailVC.swift in Sources */,
 				3804997127C78BD300BE9EAD /* MosgorClient.swift in Sources */,
@@ -377,6 +376,7 @@
 				38F0DE2F27C8B25C00E98BF5 /* DependencyContainer.swift in Sources */,
 				3804996F27C7862B00BE9EAD /* MosgorNetwork.swift in Sources */,
 				38F0DE4127C8D84000E98BF5 /* TransportStopDetailViewModel.swift in Sources */,
+				38E9D2FD27C929570022FC67 /* ButtonWithLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

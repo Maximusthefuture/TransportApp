@@ -83,7 +83,7 @@ extension TransportStopListVC: UITableViewDataSource {
 
 extension TransportStopListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let oneMoreVC = TransportStopDetailVC(initialHeight: 300)
+//        let oneMoreVC = TransportStopDetailVC(initialHeight: 300)
         let diContainer = DependencyContainer.shared()
         let transportStopId = vm?.busStopItem(at: indexPath.row).id
         print("id", transportStopId)

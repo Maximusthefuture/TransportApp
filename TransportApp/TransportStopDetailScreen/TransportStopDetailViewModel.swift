@@ -9,13 +9,31 @@ import Foundation
 
 
 protocol TransportStopDetailViewModelProtocol {
-    var transportArray: [String] { get set }
+    var transportArray: [RoutePath] { get set }
+    func getData()
+    var transportStopName: String { get }
+}
+
+class TransportStopDetailViewModel: TransportStopDetailViewModelProtocol {
+
+    fileprivate var transportStopDetail: TransportStopDetail?
+    var transportArray: [RoutePath] = []
+    
+    var transportStopName: String {
+        return transportStopDetail?.name ?? ""
+    }
+    
+    init(transportStopDetail: TransportStopDetail?) {
+        self.transportStopDetail = transportStopDetail
+    }
+    
+    func getData() {
+        transportArray.append(contentsOf: transportStopDetail?.routePath ?? [])
+    }
 }
 
 
-class TransportStopDetailViewModel: TransportStopDetailViewModelProtocol {
-    
-    var transportArray: [String] = ["One", "Two", "Three", "Four", "Five"]
-    
-    
+enum TransportType: String {
+    case bus = "bus"
+    case train = "train"
 }

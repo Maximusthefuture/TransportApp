@@ -30,10 +30,12 @@ final class DependencyContainer {
 }
 
 extension DependencyContainer: ViewControllerFactory {
-
-    func makeTransportStopDetailVC() -> TransportStopDetailVC {
-        return TransportStopDetailVC(initialHeight: 300)
+ 
+    func makeTransportStopDetailVC(transportStopDetail: TransportStopDetail?) -> TransportStopDetailVC {
+        return TransportStopDetailVC(initialHeight: 300, viewModel: makeTransportStopDetailViewModel(transportStopDetail: transportStopDetail))
     }
+    
+
     
     func makeDetailMapViewController(transportStopId: String?) -> DetailMapViewController {
         return DetailMapViewController(viewModel: makeDetailMapViewModel(transportStopId: transportStopId))
@@ -45,7 +47,9 @@ extension DependencyContainer: ViewControllerFactory {
 }
 
 extension DependencyContainer: ViewModelFactory {
-   
+    func makeTransportStopDetailViewModel(transportStopDetail: TransportStopDetail?) -> TransportStopDetailViewModelProtocol {
+        return TransportStopDetailViewModel(transportStopDetail: transportStopDetail)
+    }
     
     func makeTransportStopsViewModel() -> TransportStopsViewModelProtocol {
         return TransportStopsViewModel(mosgorNetwork: mosgorNetwork, mosgorClient: mosgorClient)

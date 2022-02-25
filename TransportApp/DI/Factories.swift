@@ -10,13 +10,13 @@ import Foundation
 
 protocol ViewControllerFactory {
     func makeTransportStopListVC() -> TransportStopListVC
-    func makeTransportStopDetailVC() -> TransportStopDetailVC
     func makeDetailMapViewController(transportStopId: String?) -> DetailMapViewController
+    func makeTransportStopDetailVC(transportStopDetail: TransportStopDetail?) -> TransportStopDetailVC
 }
 
 
 protocol ViewModelFactory {
     func makeTransportStopsViewModel() -> TransportStopsViewModelProtocol
     func makeDetailMapViewModel(transportStopId: String?) -> DetailMapViewModelProtocol
-//    func makeTransportStopDetailViewModel() -> TransportStopDetailVMProtocol
+    func makeTransportStopDetailViewModel(transportStopDetail: TransportStopDetail?) -> TransportStopDetailViewModelProtocol
 }

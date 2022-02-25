@@ -11,6 +11,8 @@ import UIKit
 
 class TransportStopDetailVC: ResizableViewController {
     
+    var transportStopDetail: TransportStopDetail?
+    
     let stopNameLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -37,15 +39,13 @@ class TransportStopDetailVC: ResizableViewController {
     
     var lineView: UIView!
     
-    @objc fileprivate func handleScheduleButtonTap() {
-        print("Handle schedule")
-    }
-    
+   
     var vm: TransportStopDetailViewModelProtocol?
     
     var transportNumbersStackView: UIStackView!
     
-    override init(initialHeight: CGFloat) {
+     init(initialHeight: CGFloat, viewModel: TransportStopDetailViewModelProtocol?) {
+        self.vm = viewModel
         super.init(initialHeight: initialHeight)
     }
     
@@ -57,18 +57,26 @@ class TransportStopDetailVC: ResizableViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(stopNameLabel)
-        vm = TransportStopDetailViewModel()
         stopNameLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0))
-        stopNameLabel.text = "STOP NAME HERE"
+ 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        stopNameLabel.text = vm?.transportStopName
+        vm?.getData()
+        stopNameLabel.layoutIfNeeded()
         initTransportNumberStackView()
         initRealTimeForecastText()
-//        line()
-//        initScheduleButton()
         initHorizontalButtonStackView()
-        
         verticalStackView()
-      
     }
+    
+    
+    @objc fileprivate func handleScheduleButtonTap() {
+        print("Handle schedule")
+    }
+    
     
     fileprivate func initTransportNumberStackView() {
         transportNumbersStackView = UIStackView()
@@ -78,20 +86,37 @@ class TransportStopDetailVC: ResizableViewController {
         transportNumbersStackView.spacing = 10
         transportNumbersStackView.anchor(top: stopNameLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 40, left: 16, bottom: 0, right: 0))
         
+        let timeHorizontalStackView = UIStackView()
+        view.addSubview(timeHorizontalStackView)
+        timeHorizontalStackView.axis = .horizontal
+        timeHorizontalStackView.distribution = .fillEqually
+        timeHorizontalStackView.spacing = 10
+        timeHorizontalStackView.alignment = .center
+        timeHorizontalStackView.anchor(top: transportNumbersStackView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 4, left: 16, bottom: 0, right: 0))
+        
         guard let count = vm?.transportArray else { return }
         for tag in count {
             let button = UIButton()
-            button.setTitle(tag, for: .normal)
-            button.backgroundColor = .brown
+            button.setTitle(tag.number, for: .normal)
+            button.setTitleColor(UIColor().colorWithHexString(hex: tag.fontColor), for: .normal)
+            button.backgroundColor = UIColor().colorWithHexString(hex: tag.color)
+            button.layer.cornerRadius = 6
             transportNumbersStackView?.addArrangedSubview(button)
+            timeHorizontalStackView.addArrangedSubview( initTimeLabel( tag.timeArrival.first ?? ""))
         }
-        
+    }
+    
+    fileprivate func initTimeLabel(_ text: String?) -> UILabel {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = text
+        label.font = UIFont.systemFont(ofSize: 10, weight: .light)
+        return label
     }
     
     fileprivate func initRealTimeForecastText() {
         view.addSubview(realTimeForecastText)
         realTimeForecastText.anchor(top: transportNumbersStackView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0))
-        
     }
     
     fileprivate func initScheduleButton() {
@@ -99,10 +124,6 @@ class TransportStopDetailVC: ResizableViewController {
         showScheduleButton.anchor(top: lineView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
     }
     
-    fileprivate func line() {
-        self.view.addSubview(lineView)
-        lineView.anchor(top: realTimeForecastText.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: view.bounds.width, height: 1.0))
-    }
     
     let shareButton: CustomButton = {
        let button = CustomButton()

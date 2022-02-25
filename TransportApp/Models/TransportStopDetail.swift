@@ -10,26 +10,11 @@ import Foundation
 
 struct TransportStopDetail: Codable {
     let id, name, type: String
-//    let wifi: Bool
-//    let bench, elevator: JSONNull?
-//    let comment, hub: [JSONAny]
-//    let photo: JSONNull?
-//    let commentTotalCount: Int
     let routePath: [RoutePath]
-//    let color, routeNumber: String
-//    let isFavorite: Bool
-//    let shareURL: String
     let lat, lon: Double
-//    let cityShuttle, electrobus: Bool
-//    let transportTypes: [String]
-//    let routeName, shuttleType: JSONNull?
-//    let regional: Bool
-//    let debug: [JSONAny]
-
+    
+    
     enum CodingKeys: String, CodingKey {
-//        case id, name, type, wifi, hub, commentTotalCount, routePath, color, routeNumber, isFavorite
-//        case shareURL = "shareUrl"
-//        case lat, lon, cityShuttle, electrobus, transportTypes, regional
         case id, name, type
         case routePath
         case lat, lon
@@ -48,12 +33,10 @@ struct RoutePath: Codable {
     let fixedArrivalTime: JSONNull?
     let tmIDS: [Int]
     let externalForecastTime: [ExternalForecastTime]
-//    let externalForecast: [JSONAny]
     let telemetryForecastTime: JSONNull?
     let byTelemetryArray: [Int]
     let routePathIDS, feature: JSONNull?
     let sberShuttle, isFavorite: Bool
-//    let messages: [JSONAny]
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -66,7 +49,7 @@ struct RoutePath: Codable {
     }
 }
 
-// MARK: - ExternalForecastTime
+
 struct ExternalForecastTime: Codable {
     let time, byTelemetry, tmID: Int
     let routePathID: String

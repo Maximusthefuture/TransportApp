@@ -12,9 +12,10 @@ class DetailMapViewController: UIViewController {
 
     var mapView: MapView!
     var vm: DetailMapViewModelProtocol?
-//    var network: NetworkProtocol?
-//    var transportStopId: String?
-    var detailVC = TransportStopDetailVC(initialHeight: 300)
+    var detailVC: TransportStopDetailVC!
+    var transportStopDetail: TransportStopDetail?
+    let diContainer = DependencyContainer.shared()
+    
     let button: UIButton = {
        let button = UIButton()
         button.backgroundColor = .blue
@@ -35,19 +36,41 @@ class DetailMapViewController: UIViewController {
         super.viewDidLoad()
         initMap()
         getStopLocation()
-        mapView.addSubview(button)
         button.centerInSuperview()
-        addChild(detailVC)
-        detailVC.didMove(toParent: self)
-        mapView.addSubview(detailVC.view)
-        detailVC.view.anchor(top: nil, leading: mapView.leadingAnchor, bottom: mapView.bottomAnchor, trailing: mapView.trailingAnchor, size: .init(width: 0, height: 300))
-//        detailVC.view.centerInBottom()
-//        present(TransportStopDetailVC(initialHeight: 300), animated: true)
+        passTransportData()
+   
+    }
+   
+    fileprivate func passTransportData() {
+        vm?.getTransportStopData = { detail in
+            self.transportStopDetail = detail
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+                self.detailVC = TransportStopDetailVC(initialHeight: 300 , viewModel: self.diContainer.makeTransportStopDetailViewModel(transportStopDetail: detail))
+                self.addChild(self.detailVC!)
+                self.detailVC?.didMove(toParent: self)
+                self.mapView.addSubview(self.detailVC!.view)
+                self.detailVC?.view.anchor(top: nil, leading: self.mapView.leadingAnchor, bottom: self.mapView.bottomAnchor, trailing: self.mapView.trailingAnchor, size: .init(width: 0, height: 300))
+                self.detailVC.view.layer.cornerRadius = 10
+                self.detailVC.view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePan)))
+            }
+        }
     }
     
-    override func loadView() {
-        super.loadView()
-        view = PassThroughView()
+    @objc func handlePan(_ panGesture: UIPanGestureRecognizer) {
+        let translationY = panGesture.translation(in: detailVC.view).y
+        detailVC.view.transform = CGAffineTransform.init(translationX: 0, y: translationY)
+        print(translationY)
+        
+        if translationY < 0 {
+            detailVC.view.transform = .identity
+        }
+        
+        if translationY >= 160.3 {
+            navigationController?.popViewController(animated: true)
+//            let vc = diContainer.makeTransportStopListVC()
+//            vc.modalPresentationStyle = .fullScreen
+//            present(vc, animated: true)
+        }
     }
     
     fileprivate func getStopLocation() {
@@ -61,8 +84,10 @@ class DetailMapViewController: UIViewController {
             pointAnnotationManager.annotations = [pointAnnotation]
             let cameraOption = CameraOptions(center: coordinate, zoom: 15.5)
             self.mapView.mapboxMap.setCamera(to: cameraOption)
+            
         }
     }
+    
     
     fileprivate func initMap() {
         let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoibWF4aW11czMwIiwiYSI6ImNsMDEyMmVnODAxbTYzY3BsMThtb25ucnAifQ.voHNtVSe0EvVL_otfnxy1g")
@@ -70,5 +95,10 @@ class DetailMapViewController: UIViewController {
         mapView = MapView(frame: view.bounds, mapInitOptions: myMapInitOptions)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(mapView)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        vm?.saveLocationToUserDefaults()
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,16 +14,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      let container = DependencyContainer.shared()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+//        let navController: UINavigationController?
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        window = UIWindow(windowScene: windowScene)
         let transportStopListVC = container.makeTransportStopListVC()
-        let mapDetailVC = container.makeDetailMapViewController(transportStopId: "00055cef-68d8-44b4-98cc-573d061b400a")
-        let navController = UINavigationController(rootViewController: mapDetailVC)
-       
+        let navController = UINavigationController(rootViewController: transportStopListVC)
+        if let transportStopId = UserDefaults.standard.string(forKey: "transportStopId") {
+            let mapDetailVC = container.makeDetailMapViewController(transportStopId: "\(transportStopId)")
+            navController.pushViewController(mapDetailVC, animated: true)
+        }
+
+        window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navController
         
         window?.makeKeyAndVisible()
