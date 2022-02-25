@@ -29,7 +29,6 @@ class DetailMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initMap()
-//        initViewModel()
         getStopLocation()
        
 //        mapView.addSubview(detailVC!.view)
@@ -57,10 +56,4 @@ class DetailMapViewController: UIViewController {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(mapView)
     }
-    
-//    fileprivate func initViewModel() {
-//       vm = DetailMapViewModel(transportStopId: transportStopId ?? "", network: network)
-//    }
-    
-
 }

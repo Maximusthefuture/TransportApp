@@ -8,21 +8,21 @@
 import Foundation
 
 protocol TransportStopsViewModelProtocol {
-    
+    var reload: (() -> Void)? { get set }
+    var getError: ((Error?) -> Void)? { get set }
+    var busStopsCount: Int { get }
+    func busStopItem(at index: Int) -> TransportData
+    func getTransportStopsList()
 }
-
 
 class TransportStopsViewModel: TransportStopsViewModelProtocol {
     
-    //MARK: FACTORY, DI???
-    
-    fileprivate var network: NetworkProtocol?
-    fileprivate var mosgorNetwork: MosgorNetwork?
-    fileprivate var mosgorClient: MosgorClient?
+//    fileprivate var network: NetworkProtocol?
+    fileprivate var mosgorNetwork: MosgorNetworkProtocol?
+    fileprivate var mosgorClient: MosgorClientProtocol?
     fileprivate var busStopsArray = [TransportData]()
     var reload: (() -> Void)?
     var getError: ((Error?) -> Void)?
-    
     
     var busStopsCount: Int {
         return busStopsArray.count
@@ -32,13 +32,17 @@ class TransportStopsViewModel: TransportStopsViewModelProtocol {
         return busStopsArray[index]
     }
     
-    init(network: NetworkProtocol) {
-        self.network = network
-        mosgorNetwork = MosgorNetwork(network: network)
-        mosgorClient = MosgorClient(network: mosgorNetwork)
+    init(mosgorNetwork: MosgorNetworkProtocol, mosgorClient: MosgorClientProtocol) {
+//        self.network = network
+        self.mosgorNetwork = mosgorNetwork
+        self.mosgorClient = mosgorClient
     }
     
     func getTransportStopsList() {
+        getStopListsFromClient()
+    }
+    
+    fileprivate func getStopListsFromClient() {
         let url = URL(string:"https://api.mosgorpass.ru/v8.2/stop")
         guard let url = url else { return }
         mosgorClient?.getTransportStopsData(from: url) { busStops, error in

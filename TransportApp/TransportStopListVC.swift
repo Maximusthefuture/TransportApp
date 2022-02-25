@@ -11,24 +11,27 @@ class TransportStopListVC: UIViewController {
     
     fileprivate var loadingIndicator: UIActivityIndicatorView?
     fileprivate let tableView = UITableView()
-    fileprivate var vm: TransportStopsViewModel?
-    let network = Network()
+    fileprivate var vm: TransportStopsViewModelProtocol?
+ 
+    
+    init(viewModel: TransportStopsViewModelProtocol) {
+        super.init(nibName: nil, bundle: nil)
+        self.vm = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.title = "Остановки"
-        initViewModel()
         initTableView()
         initLoadingIndicator()
         getVMObservers()
     }
-    
-    fileprivate func initViewModel() {
-      
-        vm = TransportStopsViewModel(network: network)
-    }
-    
+
     fileprivate func getVMObservers() {
         vm?.getTransportStopsList()
         vm?.reload = {
@@ -65,7 +68,6 @@ class TransportStopListVC: UIViewController {
 extension TransportStopListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
-//        let cell = tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell") as! UITableViewCell
         cell.textLabel?.text  = vm?.busStopItem(at: indexPath.row).name
         return cell
     }
@@ -81,7 +83,7 @@ extension TransportStopListVC: UITableViewDataSource {
 
 extension TransportStopListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let diContainer = DependencyContainer.shared
+        let diContainer = DependencyContainer.shared()
         let transportStopId = vm?.busStopItem(at: indexPath.row).id
         let vc = diContainer.makeDetailMapViewController(transportStopId: transportStopId ?? "00000000")
         self.navigationController?.pushViewController(vc, animated: true)

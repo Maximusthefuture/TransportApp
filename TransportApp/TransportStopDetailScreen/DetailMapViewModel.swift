@@ -14,19 +14,16 @@ protocol DetailMapViewModelProtocol {
 
 class DetailMapViewModel: DetailMapViewModelProtocol {
     
-    var transportStopId: String?
-    fileprivate let network: NetworkProtocol?
-    fileprivate var mosgorNetwork: MosgorNetwork?
-    fileprivate var mosgorClient: MosgorClient?
+    fileprivate var transportStopId: String?
+    fileprivate var mosgorNetwork: MosgorNetworkProtocol?
+    fileprivate var mosgorClient: MosgorClientProtocol?
     var reload: (() -> Void)?
     var transportStopLocation: ((_ lat: Double?, _ lon: Double?) -> Void)?
     
-    init(transportStopId: String?, network: NetworkProtocol?) {
+    init(transportStopId: String?, mosgorNetwork: MosgorNetworkProtocol, mosgorClient: MosgorClientProtocol) {
         self.transportStopId = transportStopId
-        self.network = network
-        mosgorNetwork = MosgorNetwork(network: network!)
-        mosgorClient = MosgorClient(network: mosgorNetwork)
-        
+        self.mosgorNetwork = mosgorNetwork
+        self.mosgorClient = mosgorClient
     }
     
     func getTransportStopDetailInfo() {

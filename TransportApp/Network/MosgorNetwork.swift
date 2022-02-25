@@ -18,7 +18,7 @@ class MosgorNetwork: MosgorNetworkProtocol {
    
     var network: NetworkProtocol?
     
-    init(network: NetworkProtocol) {
+    init(network: NetworkProtocol?) {
         self.network = network
     }
     

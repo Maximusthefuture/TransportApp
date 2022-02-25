@@ -7,17 +7,30 @@
 
 import Foundation
 
-
 class DependencyContainer {
     
-    static let shared = DependencyContainer()
-    let network = Network()
+    private var network: NetworkProtocol?
+    private var mosgorNetwork: MosgorNetworkProtocol!
+    private var mosgorClient: MosgorClientProtocol!
     
+    fileprivate init() {
+        self.network = Network()
+        self.mosgorNetwork = MosgorNetwork(network: network)
+        self.mosgorClient = MosgorClient(network: mosgorNetwork)
+    }
+    
+    fileprivate static var sharedDIContainer: DependencyContainer {
+        let dependencyContainer = DependencyContainer()
+        return dependencyContainer
+    }
+    
+    class func shared() -> DependencyContainer {
+        return sharedDIContainer
+    }
 }
 
 extension DependencyContainer: ViewControllerFactory {
-   
-   
+
     func makeTransportStopDetailVC() -> TransportStopDetailVC {
         return TransportStopDetailVC(initialHeight: 300)
     }
@@ -27,17 +40,19 @@ extension DependencyContainer: ViewControllerFactory {
     }
     
     func makeTransportStopListVC() -> TransportStopListVC {
-        return TransportStopListVC()
+        return TransportStopListVC(viewModel: makeTransportStopsViewModel())
     }
 }
 
 extension DependencyContainer: ViewModelFactory {
+   
+    
     func makeTransportStopsViewModel() -> TransportStopsViewModelProtocol {
-        return TransportStopsViewModel(network: network)
+        return TransportStopsViewModel(mosgorNetwork: mosgorNetwork, mosgorClient: mosgorClient)
     }
     
     func makeDetailMapViewModel(transportStopId: String?) -> DetailMapViewModelProtocol {
-        return DetailMapViewModel(transportStopId: transportStopId, network: network)
+        return DetailMapViewModel(transportStopId: transportStopId, mosgorNetwork: mosgorNetwork, mosgorClient: mosgorClient)
     }
     
     
