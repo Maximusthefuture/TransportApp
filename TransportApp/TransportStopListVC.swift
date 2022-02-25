@@ -84,8 +84,6 @@ extension TransportStopListVC: UITableViewDelegate {
         let diContainer = DependencyContainer.shared
         let transportStopId = vm?.busStopItem(at: indexPath.row).id
         let vc = diContainer.makeDetailMapViewController(transportStopId: transportStopId ?? "00000000")
-//        vc.network = network
-//        vc.transportStopId = vm?.busStopItem(at: indexPath.row).id
         self.navigationController?.pushViewController(vc, animated: true)
 //        present(oneMoreVC, animated: true)
         
