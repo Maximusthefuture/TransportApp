@@ -23,7 +23,7 @@ class TransportStopDetailVC: ResizableViewController {
     
     let realTimeForecastText: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textColor = .gray
         label.text = "Real-time forecast"
         return label
@@ -92,7 +92,7 @@ class TransportStopDetailVC: ResizableViewController {
         timeHorizontalStackView.distribution = .fillEqually
         timeHorizontalStackView.spacing = 10
         timeHorizontalStackView.alignment = .center
-        timeHorizontalStackView.anchor(top: transportNumbersStackView.bottomAnchor, leading: transportNumbersStackView.leadingAnchor, bottom: nil, trailing: transportNumbersStackView.trailingAnchor, padding: .init(top: 4, left: 16, bottom: 0, right: 0))
+        timeHorizontalStackView.anchor(top: transportNumbersStackView.bottomAnchor, leading: transportNumbersStackView.leadingAnchor, bottom: nil, trailing: transportNumbersStackView.trailingAnchor, padding: .init(top: 4, left: 8, bottom: 0, right: 0))
         
         guard let count = vm?.transportArray else { return }
         for tag in count {
@@ -102,21 +102,21 @@ class TransportStopDetailVC: ResizableViewController {
             button.backgroundColor = UIColor().colorWithHexString(hex: tag.color)
             button.layer.cornerRadius = 6
             transportNumbersStackView?.addArrangedSubview(button)
-            timeHorizontalStackView.addArrangedSubview( initTimeLabel( tag.timeArrival.first ?? ""))
+            timeHorizontalStackView.addArrangedSubview(initTimeLabel( tag.timeArrival.first ?? ""))
         }
     }
     
     fileprivate func initTimeLabel(_ text: String?) -> UILabel {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .gray
         label.text = text
-        label.font = UIFont.systemFont(ofSize: 10, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 10, weight: .medium)
         return label
     }
     
     fileprivate func initRealTimeForecastText() {
         view.addSubview(realTimeForecastText)
-        realTimeForecastText.anchor(top: transportNumbersStackView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0))
+        realTimeForecastText.anchor(top: transportNumbersStackView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 24, left: 16, bottom: 0, right: 0))
     }
     
     fileprivate func initScheduleButton() {
