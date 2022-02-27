@@ -1,10 +1,4 @@
-//
-//  Extensions+UIView.swift
-//  SlideOutMenuInProgress
-//
-//  Created by Brian Voong on 9/30/18.
-//  Copyright © 2018 Brian Voong. All rights reserved.
-//
+
 
 import UIKit
 
@@ -167,20 +161,14 @@ extension UIView {
 
 extension UIColor {
     func colorWithHexString (hex: String) -> UIColor {
-//        var cString: String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet).uppercaseString
         var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
         if (cString.hasPrefix("#")) {
             cString = (cString as NSString).substring(from: 1)
         }
-
-//        if (countElements(cString) != 6) {
-//            return UIColor.grayColor()
-//        }
-
-        var rString = (cString as NSString).substring(to: 2)
-        var gString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 2)
-        var bString = ((cString as NSString).substring(from: 4) as NSString).substring(to: 2)
+        let rString = (cString as NSString).substring(to: 2)
+        let gString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 2)
+        let bString = ((cString as NSString).substring(from: 4) as NSString).substring(to: 2)
 
         var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
         Scanner(string: rString).scanHexInt32(&r)

@@ -40,7 +40,6 @@ class DetailMapViewModel: DetailMapViewModelProtocol {
             self.transportStopLocation?(stopDetail?.lat, stopDetail?.lon)
             self.getTransportStopData?(stopDetail)
         })
-        
     }
     
     func saveLocationToUserDefaults() {

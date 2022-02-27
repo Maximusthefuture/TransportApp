@@ -21,7 +21,6 @@ struct TransportStopDetail: Codable {
     }
 }
 
-// MARK: - RoutePath
 struct RoutePath: Codable {
     let id, routePathID, type, number: String
     let timeArrivalSecond: [Int]
@@ -48,7 +47,6 @@ struct RoutePath: Codable {
         case feature, sberShuttle, isFavorite
     }
 }
-
 
 struct ExternalForecastTime: Codable {
     let time, byTelemetry, tmID: Int

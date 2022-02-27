@@ -39,7 +39,6 @@ class TransportStopDetailVC: ResizableViewController {
     
     var lineView: UIView!
     
-   
     var vm: TransportStopDetailViewModelProtocol?
     
     var transportNumbersStackView: UIStackView!

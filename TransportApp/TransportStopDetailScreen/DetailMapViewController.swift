@@ -67,9 +67,6 @@ class DetailMapViewController: UIViewController {
         
         if translationY >= 160.3 {
             navigationController?.popViewController(animated: true)
-//            let vc = diContainer.makeTransportStopListVC()
-//            vc.modalPresentationStyle = .fullScreen
-//            present(vc, animated: true)
         }
     }
     
@@ -87,7 +84,6 @@ class DetailMapViewController: UIViewController {
             
         }
     }
-    
     
     fileprivate func initMap() {
         let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoibWF4aW11czMwIiwiYSI6ImNsMDEyMmVnODAxbTYzY3BsMThtb25ucnAifQ.voHNtVSe0EvVL_otfnxy1g")

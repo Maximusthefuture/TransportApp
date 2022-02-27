@@ -35,8 +35,6 @@ extension DependencyContainer: ViewControllerFactory {
         return TransportStopDetailVC(initialHeight: 300, viewModel: makeTransportStopDetailViewModel(transportStopDetail: transportStopDetail))
     }
     
-
-    
     func makeDetailMapViewController(transportStopId: String?) -> DetailMapViewController {
         return DetailMapViewController(viewModel: makeDetailMapViewModel(transportStopId: transportStopId))
     }
