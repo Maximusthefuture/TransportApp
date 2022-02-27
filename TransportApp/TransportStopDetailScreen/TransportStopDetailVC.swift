@@ -41,8 +41,6 @@ class TransportStopDetailVC: ResizableViewController {
     
     var vm: TransportStopDetailViewModelProtocol?
     
-    var transportNumbersStackView: UIStackView!
-    
      init(initialHeight: CGFloat, viewModel: TransportStopDetailViewModelProtocol?) {
         self.vm = viewModel
         super.init(initialHeight: initialHeight)
@@ -57,14 +55,13 @@ class TransportStopDetailVC: ResizableViewController {
         view.backgroundColor = .white
         view.addSubview(stopNameLabel)
         stopNameLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 16, bottom: 0, right: 0))
- 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        stopNameLabel.text = vm?.transportStopName
+        setUpTransportStopLabel()
         vm?.getData()
-        stopNameLabel.layoutIfNeeded()
+        initStackViews()
         initTransportNumberStackView()
         initRealTimeForecastText()
         initHorizontalButtonStackView()
@@ -72,27 +69,39 @@ class TransportStopDetailVC: ResizableViewController {
     }
     
     
+    let timeHorizontalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    let transportNumbersStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        return stackView
+    }()
+    
     @objc fileprivate func handleScheduleButtonTap() {
         print("Handle schedule")
     }
     
-    //разделить на более мелкие методы
-    fileprivate func initTransportNumberStackView() {
-        transportNumbersStackView = UIStackView()
+    fileprivate func setUpTransportStopLabel() {
+        stopNameLabel.text = vm?.transportStopName
+    }
+    
+    fileprivate func initStackViews() {
         view.addSubview(transportNumbersStackView)
-        transportNumbersStackView?.axis = .horizontal
-        transportNumbersStackView?.distribution = .fillEqually
-        transportNumbersStackView.spacing = 10
         transportNumbersStackView.anchor(top: stopNameLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 40, left: 16, bottom: 0, right: 0))
-        
-        let timeHorizontalStackView = UIStackView()
         view.addSubview(timeHorizontalStackView)
-        timeHorizontalStackView.axis = .horizontal
-        timeHorizontalStackView.distribution = .fillEqually
-        timeHorizontalStackView.spacing = 10
-        timeHorizontalStackView.alignment = .center
         timeHorizontalStackView.anchor(top: transportNumbersStackView.bottomAnchor, leading: transportNumbersStackView.leadingAnchor, bottom: nil, trailing: transportNumbersStackView.trailingAnchor, padding: .init(top: 4, left: 8, bottom: 0, right: 0))
-        
+    }
+    
+    fileprivate func initTransportNumberStackView() {
         guard let count = vm?.transportArray else { return }
         for tag in count {
             let button = UIButton()
@@ -100,7 +109,7 @@ class TransportStopDetailVC: ResizableViewController {
             button.setTitleColor(UIColor().colorWithHexString(hex: tag.fontColor), for: .normal)
             button.backgroundColor = UIColor().colorWithHexString(hex: tag.color)
             button.layer.cornerRadius = 6
-            transportNumbersStackView?.addArrangedSubview(button)
+            transportNumbersStackView.addArrangedSubview(button)
             timeHorizontalStackView.addArrangedSubview(initTimeLabel( tag.timeArrival.first ?? ""))
         }
     }
@@ -122,7 +131,6 @@ class TransportStopDetailVC: ResizableViewController {
         view.addSubview(showScheduleButton)
         showScheduleButton.anchor(top: lineView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
     }
-    
     
     let shareButton: CustomButton = {
        let button = CustomButton()
